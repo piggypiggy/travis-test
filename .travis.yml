@@ -1,0 +1,32 @@
+dist: bionic
+
+language: c
+
+arch:
+  - amd64
+
+branches:
+  only:
+  - master
+
+matrix:
+  include:
+    - os: linux
+      compiler: gcc
+
+    - os: linux
+      compiler: clang
+
+    - os: osx
+      osx_image: xcode10
+      env:
+        - MATRIX_EVAL="brew install gcc && CC=gcc-7 && CXX=g++-7"
+
+    - os: osx
+      osx_image: xcode11.1
+
+script:
+  - cd build
+  - cmake ..
+  - make
+  - make test
