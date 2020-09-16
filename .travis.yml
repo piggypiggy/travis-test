@@ -26,7 +26,6 @@ matrix:
       osx_image: xcode11.1
 
 script:
-  - cd build
-  - cmake ..
+  - cmake .
   - make
   - make test
