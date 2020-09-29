@@ -39,6 +39,4 @@ matrix:
 script:
   - cmake .
   - make
-  - if ["$CROSS"]; then 
-    make test
-  - fi
+  - if [ -z "$CROSS" ]; then make test; fi
