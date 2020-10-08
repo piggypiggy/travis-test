@@ -24,7 +24,7 @@ matrix:
             - binutils-mingw-w64
             - gcc-mingw-w64
       compiler: x86_64-w64-mingw32-gcc
-      env: CROSS=x86_64-windows-mingw64
+      env: CROSS=1
       toolchain: -DCMAKE_TOOLCHAIN_FILE=x86_64-windows-mingw64.cmake
 
     - os: osx
@@ -37,6 +37,6 @@ matrix:
       osx_image: xcode11.1
 
 script:
-  - cmake . "$CROSS"
+  - cmake . "$toolchain"
   - make
   - if [ -z "$CROSS" ]; then make test; fi
