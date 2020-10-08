@@ -37,6 +37,6 @@ matrix:
       osx_image: xcode11.1
 
 script:
-  - cmake . $toolchain
+  - cmake . "$toolchain"
   - make
   - if [ -z "$CROSS" ]; then make test; fi
