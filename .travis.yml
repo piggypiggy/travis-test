@@ -28,6 +28,7 @@ matrix:
         - CROSS=1 
         - toolchain=-DCMAKE_TOOLCHAIN_FILE=$TRAVIS_BUILD_DIR/x86_64-windows-mingw64.cmake
         - option=-DCMAKE_BUILD_TYPE=Release
+        - option=-DCMAKE_BUILD_TYPE=Debug
 
     # - os: osx
     #   arch: amd64
@@ -39,7 +40,6 @@ matrix:
     #   osx_image: xcode11.1
 
 script:
-  - cmake -DCMAKE_TOOLCHAIN_FILE=$TRAVIS_BUILD_DIR/x86_64-windows-mingw64.cmake .
-  - cmake $toolchain .
+  - cmake $toolchain $option .
   - make
   - if [ -z "$CROSS" ]; then make test; fi
