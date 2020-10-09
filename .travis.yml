@@ -9,13 +9,13 @@ branches:
 
 matrix:
   include:
-    - os: linux
-      arch: amd64
-      compiler: gcc
+    # - os: linux
+    #   arch: amd64
+    #   compiler: gcc
 
-    - os: linux
-      arch: amd64
-      compiler: clang
+    # - os: linux
+    #   arch: amd64
+    #   compiler: clang
 
     - os: linux
       addons:
@@ -29,16 +29,16 @@ matrix:
         - toolchain=-DCMAKE_TOOLCHAIN_FILE=./x86_64-windows-mingw64.cmake
         - option=-DCMAKE_BUILD_TYPE=Release
 
-    - os: osx
-      arch: amd64
-      osx_image: xcode10.2
-      compiler: clang
+    # - os: osx
+    #   arch: amd64
+    #   osx_image: xcode10.2
+    #   compiler: clang
 
-    - os: osx
-      arch: amd64
-      osx_image: xcode11.1
+    # - os: osx
+    #   arch: amd64
+    #   osx_image: xcode11.1
 
 script:
-  - cmake "$toolchain" "$option" .
+  - cmake -DCMAKE_TOOLCHAIN_FILE=./x86_64-windows-mingw64.cmake .
   - make
   - if [ -z "$CROSS" ]; then make test; fi
