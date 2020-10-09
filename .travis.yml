@@ -39,6 +39,7 @@ matrix:
     #   osx_image: xcode11.1
 
 script:
-  - cmake -DCMAKE_TOOLCHAIN_FILE=./x86_64-windows-mingw64.cmake .
+  - cmake -DCMAKE_TOOLCHAIN_FILE=$TRAVIS_BUILD_DIR/x86_64-windows-mingw64.cmake .
+  - cmake $toolchain .
   - make
   - if [ -z "$CROSS" ]; then make test; fi
