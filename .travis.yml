@@ -45,6 +45,6 @@ matrix:
     #   osx_image: xcode11.1
 
 script:
-  - cmake $toolchain $option .
+  - cmake $toolchain $option $sanitizer .
   - make
   - if [ -z "$CROSS" ]; then make test; fi
