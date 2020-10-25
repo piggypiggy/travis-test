@@ -9,15 +9,19 @@ branches:
 
 matrix:
   include:
-    # - os: linux
-    #   arch: amd64
-    #   compiler: gcc
+    - os: linux
+      arch: amd64
+      compiler: gcc
+      env: 
+        - option = -DCMAKE_BUILD_TYPE=Debug
+        - sanitizer = CFLAGS="-fsanitize=address"
 
     - os: linux
       arch: amd64
       compiler: clang
-      - option = -DCMAKE_BUILD_TYPE=Release
-      - sanitizer = CFLAGS="-fsanitize=address"
+      env: 
+        - option = -DCMAKE_BUILD_TYPE=Release
+        - sanitizer = CFLAGS="-fsanitize=address"
 
     - os: linux
       addons:
