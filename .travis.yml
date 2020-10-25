@@ -13,9 +13,11 @@ matrix:
     #   arch: amd64
     #   compiler: gcc
 
-    # - os: linux
-    #   arch: amd64
-    #   compiler: clang
+    - os: linux
+      arch: amd64
+      compiler: clang
+      - option = -DCMAKE_BUILD_TYPE=Release
+      - sanitizer = CFLAGS="-fsanitize=address"
 
     - os: linux
       addons:
@@ -26,9 +28,8 @@ matrix:
       compiler: x86_64-w64-mingw32-gcc
       env: 
         - CROSS=1 
-        - toolchain=-DCMAKE_TOOLCHAIN_FILE=$TRAVIS_BUILD_DIR/x86_64-windows-mingw64.cmake
-        - option=-DCMAKE_BUILD_TYPE=Release
-        - option=-DCMAKE_BUILD_TYPE=Debug
+        - toolchain=-DCMAKE_TOOLCHAIN_FILE=./x86_64-windows-mingw64.cmake
+        - option = -DCMAKE_BUILD_TYPE=Release
 
     # - os: osx
     #   arch: amd64
