@@ -61,3 +61,5 @@ script:
   - cmake $toolchain $buildtype $sanitizer .
   - make
   - if [ -z "$CROSS" ]; then make test; fi
+  - cat /Users/travis/build/piggypiggy/travis-test/build/CMakeFiles/CMakeOutput.log
+  - cat /Users/travis/build/piggypiggy/travis-test/build/CMakeFiles/CMakeError.log
