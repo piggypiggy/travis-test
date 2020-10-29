@@ -37,17 +37,17 @@ matrix:
 
     - os: osx
       arch: amd64
-      compiler: gcc
+      compiler: clang
       env: 
-        - sanitizer=CFLAGS="-fsanitize=address"
+        - sanitizer=CFLAGS="-fsanitize=memory"
 
     - os: osx
       arch: amd64
       osx_image: xcode11.1
       compiler: clang
       env: 
-        - buildtype=-DCMAKE_BUILD_TYPE=Debug
-        - sanitizer=-DUSE_MSAN=ON
+        - buildtype=-DCMAKE_BUILD_TYPE=Release
+        - sanitizer=CFLAGS="-fsanitize=memory"
 
     - os: osx
       arch: amd64
