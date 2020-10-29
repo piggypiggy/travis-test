@@ -37,14 +37,25 @@ matrix:
 
     - os: osx
       arch: amd64
-      osx_image: xcode10.2
-      compiler: clang
-
-    - os: osx
-      arch: amd64
       compiler: gcc
       env: 
         - sanitizer=CFLAGS="-fsanitize=address"
+
+    - os: osx
+      arch: amd64
+      osx_image: xcode11.1
+      compiler: clang
+      env: 
+        - buildtype=-DCMAKE_BUILD_TYPE=Debug
+        - sanitizer=-DUSE_MSAN=ON
+
+    - os: osx
+      arch: amd64
+      osx_image: xcode11.1
+      compiler: clang
+      env: 
+        - buildtype=-DCMAKE_BUILD_TYPE=Release
+        - sanitizer=-DUSE_MSAN=ON
 
 script:
   - cmake $toolchain $buildtype $sanitizer .
