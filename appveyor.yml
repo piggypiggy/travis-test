@@ -1,22 +1,22 @@
-version: '{build}'
+# version: '{build}'
 
-image: Visual Studio 2017
+# image: Visual Studio 2017
 
-platform:
-  - x64
+# platform:
+#   - x64
 
-environment:
-  matrix:
-    - GENERATOR: "Visual Studio 15 Win64"
-      CONFIG: Debug
+# environment:
+#   matrix:
+#     - GENERATOR: "Visual Studio 15 Win64"
+#       CONFIG: Debug
 
-    - GENERATOR: "Visual Studio 15 Win64"
-      CONFIG: Release
+#     - GENERATOR: "Visual Studio 15 Win64"
+#       CONFIG: Release
 
-build_script:
-  - cmake "-G%GENERATOR%" . -B build -DENABLE_TESTING=1
-  - cmake --build build --config "%CONFIG%"
+# build_script:
+#   - cmake "-G%GENERATOR%" . -B build -DENABLE_TESTING=1
+#   - cmake --build build --config "%CONFIG%"
 
-test_script:
-  - ps: cd build
-  - ctest -C "%CONFIG%"
+# test_script:
+#   - ps: cd build
+#   - ctest -C "%CONFIG%"
