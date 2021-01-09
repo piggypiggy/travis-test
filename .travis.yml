@@ -12,6 +12,7 @@ script:
   - cd build
   - cmake .. -GXcode -DCMAKE_SYSTEM_NAME=iOS
   - cmake --build . --config Release
+  - make test
 
 
 
